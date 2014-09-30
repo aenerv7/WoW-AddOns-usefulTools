@@ -2,9 +2,9 @@
 ## Title: 实用小工具
 ## Notes: 套用和修改网上搜刮来的实用代码所制成的小插件合集
 ## Author: 闪光的百式
-## Version: 0.2
+## Version: 0.3
 
 uiCustomize.lua
-collectgarbage.lua
-maxCameraDistance.lua
+garbageCollection.lua
+maximumCamDistance.lua
 buffMonitor.lua
