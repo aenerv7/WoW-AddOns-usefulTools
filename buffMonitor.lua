@@ -1,8 +1,4 @@
---[[
-来源：http://bbs.ngacn.cc/read.php?tid=5546734
-]]--
-
---自身 BUFF 监视
+--自身BUFF监视
 bl={
 
 --[[
@@ -36,10 +32,14 @@ bl={
 13750,
 115189,
 1966,
+84617,
+73651,
+108212,
+2983,
 }
 
 bs=30;
-xb=-55;
+xb=70;
 yb=-70;
 br=3;
 bdr="BORDER"
@@ -50,13 +50,13 @@ bm=math.ceil;
 fm=math.floor;
 st=STANDARD_TEXT_FONT;
 
-function cu(s) 
+function cub(s) 
 	return UnitBuff("player",gi(s))
 end 
 
 function Cb(i,s)
 	local _,_,t3=gi(s)
-	local f=cbf("Frame")
+	local f=cbf("Frame", "BFrame")
 	f:SetSize(bs,bs)
 	f.t=f:CreateTexture(nil,bdr)
 	f.t:SetAllPoints(true)
@@ -69,7 +69,7 @@ end
 
 function vb(s,i,row)
 
-	local b1,_,_,b4=cu(s)
+	local b1,_,_,b4=cub(s)
 	local f=_G["B"..i]
 	if b1 then 
 		f:Show()
@@ -84,7 +84,7 @@ end
 
 function ub()
 	for i,s in ipairs(bl) do 
-		local b,_,_,_,_,_,k=cu(s)
+		local b,_,_,_,_,_,k=cub(s)
 		if b then 
 			local vt=fm(k-GetTime())
 			local vtf=(k-GetTime())
@@ -101,7 +101,7 @@ function ub()
 	end 
 end 
 
-function Cc(f)
+function Ccfb(f)
 	f.c=f:CreateFontString(nil,bdr)
 	f.c:SetFont(st,13,"OUTLINE")
 	f.c:SetPoint("CENTER",0,-13)
@@ -115,7 +115,7 @@ end
 
 for i,s in ipairs(bl) do 
 	_G["B"..i]=Cb(i,s)
-	Cc(_G["B"..i])
+	Ccfb(_G["B"..i])
 	_G["B"..i]:Hide()
 end 
 
@@ -127,7 +127,7 @@ function bb()
 	end 
 end 
 
-bk=cbf("Frame")
+bk=cbf("Frame", "BFrame")
 bk:SetScript("OnEvent",bb)
 bk:SetScript("OnUpdate",ub)
 bk:RegisterEvent(be)
